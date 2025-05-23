@@ -570,82 +570,171 @@
             border-top: 1px solid rgba(0, 255, 157, 0.1);
         }
         
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+        :root {
+        --primary-color: #00ff9d;
+        --dark-color: #0a192f;
+        --light-color: #ccd6f6;
+        }
+
+        .footer-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 2rem;
+        background-color: var(--dark-color);
+        }
+
+        .footer-column {
+        width: 100%;
+        max-width: 500px; 
+        padding: 2.5rem;
+        background-color: rgba(10, 25, 47, 0.9);
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(0, 255, 157, 0.1);
+        text-align: center;
+        margin: 0 auto; 
+        }
+
+        .footer-column h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary-color);
+        position: relative;
+        padding-bottom: 0.75rem;
+        }
+
+        .footer-column h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background-color: var(--primary-color);
+        }
+
+        .footer-column p {
+        color: rgba(204, 214, 246, 0.8);
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+        }
+
+        .footer-social {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        }
+
+        .footer-social a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background-color: rgba(0, 255, 157, 0.1);
+        color: var(--primary-color);
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+        background-color: var(--primary-color);
+        color: var(--dark-color);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 255, 157, 0.4);
+        }
+
+        
+        @media (max-width: 768px) {
+        .footer-container {
+            padding: 1.5rem;
+            min-height: auto;
+        }
+        
+        .footer-column {
+            padding: 2rem;
+            max-width: 100%;
         }
         
         .footer-column h3 {
             font-size: 1.3rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--primary-color);
-        }
-        
-        .footer-column p {
-            margin-bottom: 15px;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: rgba(204, 214, 246, 0.7);
-            transition: all 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary-color);
-            padding-left: 5px;
-        }
-        
-        .footer-social {
-            display: flex;
-            gap: 15px;
         }
         
         .footer-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(0, 255, 157, 0.1);
-            color: var(--primary-color);
+            width: 38px;
+            height: 38px;
+            font-size: 1rem;
+        }
+        }
+
+        @media (max-width: 480px) {
+        .footer-column {
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .footer-column h3 {
             font-size: 1.2rem;
-            transition: all 0.3s ease;
+            margin-bottom: 1rem;
         }
         
-        .footer-social a:hover {
-            background-color: var(--primary-color);
-            color: var(--dark-color);
-            transform: translateY(-5px);
+        .footer-column p {
+            font-size: 0.9rem;
         }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(0, 255, 157, 0.1);
         }
-        
+        /* Footer Bottom Styles */
+.footer-bottom {
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(0, 255, 157, 0.1);
+    background-color: rgba(10, 25, 47, 0.9);
+    width: 100%;
+}
+
+.footer-bottom p {
+    color: rgba(204, 214, 246, 0.7);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Combined with previous footer column styles */
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: var(--dark-color);
+    position: relative;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-bottom {
+        padding: 1rem 0;
+    }
+    
+    .footer-bottom p {
+        font-size: 0.8rem;
+    }
+}
         /* Responsive Styles */
         @media (max-width: 992px) {
             .hero-content {
@@ -849,20 +938,6 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3>MTCNA Certification</h3>
-                    <p>Complete training for MikroTik Certified Network Associate certification with hands-on labs and exam preparation.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3>Network Design</h3>
-                    <p>Learn to design efficient and scalable networks using MikroTik devices and best practices.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>Security Training</h3>
@@ -882,13 +957,7 @@
                     <h3>Wireless Networking</h3>
                     <p>Comprehensive training on configuring and optimizing wireless networks with MikroTik.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-user-graduate"></i>
-                    </div>
-                    <h3>Advanced Courses</h3>
-                    <p>Specialized training for MTCRE, MTCWE, and other advanced MikroTik certifications.</p>
-                </div>
+                
             </div>
         </div>
     </section>
@@ -1026,7 +1095,7 @@
         </div>
     </section>
 
-    <section class="section" id="contact">
+    <!-- <section class="section" id="contact">
         <div class="container">
             <div class="section-title">
                 <h2>Contact Us</h2>
@@ -1064,7 +1133,7 @@
                 </form>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <footer>
         <div class="container">
@@ -1078,36 +1147,6 @@
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#trainers">Trainers</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Courses</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">MTCNA Certification</a></li>
-                        <li><a href="#">MTCRE Certification</a></li>
-                        <li><a href="#">MTCWE Certification</a></li>
-                        <li><a href="#">Network Security</a></li>
-                        <li><a href="#">Wireless Networking</a></li>
-                        <li><a href="#">Advanced Routing</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe to our newsletter for the latest updates on courses and events.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Your Email" required>
-                        <button type="submit" class="btn">Subscribe</button>
-                    </form>
                 </div>
             </div>
             <div class="footer-bottom">
