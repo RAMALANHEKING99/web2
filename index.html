@@ -823,6 +823,152 @@
                 padding: 20px;
             }
         }
+        /* Hero Slider Styles */
+        .hero-slider {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-slides {
+            height: 100%;
+            position: relative;
+        }
+
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease, transform 1s ease;
+            transform: translateY(20px);
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 255, 157, 0.05) 100%);
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            transform: translateY(0);
+            z-index: 1;
+        }
+
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 255, 157, 0.05) 100%);
+            z-index: -1;
+        }
+
+        /* Slider Controls */
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .slider-prev, .slider-next {
+            background-color: rgba(10, 25, 47, 0.7);
+            color: var(--primary-color);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .slider-prev:hover, .slider-next:hover {
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+        }
+
+        /* Slider Dots */
+        .slider-dots {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(204, 214, 246, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hero-content {
+                padding-right: 0;
+            }
+            
+            .hero-slide {
+                padding-top: 120px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-slider {
+                height: auto;
+                min-height: 100vh;
+            }
+            
+            .hero-slide {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 120px;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-slide h1 {
+                font-size: 2rem;
+            }
+            
+            .slider-controls {
+                padding: 0 10px;
+            }
+            
+            .slider-prev, .slider-next {
+                width: 40px;
+                height: 40px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -837,46 +983,93 @@
             </button>
             <nav id="mainNav">
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#trainers">Trainers</a></li>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#trainers">Pelatih</a></li>
                     <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#okehh">Kontak</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Become a <span>Network Expert</span> with Mikrotik Academy</h1>
-                <p>Join our comprehensive training program and get certified as a MikroTik Certified Network Associate (MTCNA). Gain practical skills and knowledge to excel in the networking industry.</p>
-                <div class="btn-group">
-                    <a href="#about" class="btn">Get Started</a>
-                    <a href="#services" class="btn btn-outline">Our Services</a>
+    <section class="hero-slider" id="home">
+        <div class="hero-slides">
+            <!-- Slide 1 -->
+            <div class="hero-slide active">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Menjadi Pakar <span>Jaringan dengan</span> Mikrotik Academy</h1>
+                        <p>Bergabunglah dengan program pelatihan komprehensif kami dan dapatkan sertifikasi sebagai MikroTik Certified Network Associate (MTCNA). Dapatkan keterampilan dan pengetahuan praktis untuk unggul dalam industri jaringan.</p>
+                        <div class="btn-group">
+                            <a href="#about" class="btn">Get Started</a>
+                            <a href="#services" class="btn btn-outline">Our Services</a>
+                        </div>
+                    </div>
                 </div>
             </div>
+            
+            <!-- Slide 2 -->
+            <div class="hero-slide">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Pelatihan <span>Jaringan</span> Praktis</h1>
+                        <p>Belajarlah dari pelatih bersertifikat yang memiliki pengalaman di dunia nyata. Pendekatan praktis kami memastikan Anda siap bekerja setelah menyelesaikan pekerjaan.</p>
+                        <div class="btn-group">
+                            <a href="#trainers" class="btn">Meet Our Trainers</a>
+                            <a href="#faq" class="btn btn-outline">View FAQs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="hero-slide">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Sertifikasi yang <span>Diakui Industri</span></h1>
+                         
+                        <p>Tingkatkan karier Anda dengan sertifikasi yang dihargai oleh para pemberi kerja di seluruh dunia. Mulailah dengan MTCNA dan lanjutkan ke sertifikasi tingkat lanjut.</p>
+                        <div class="btn-group">
+                            <a href="#services" class="btn">Our Programs</a>
+                            <a href="#contact" class="btn btn-outline">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slider Controls -->
+        <div class="slider-controls">
+            <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        
+        <!-- Slider Dots -->
+        <div class="slider-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
         </div>
     </section>
 
     <section class="section" id="about">
         <div class="container">
             <div class="section-title">
-                <h2>About Mikrotik Academy</h2>
-                <p>MikroTik Academy is an educational program that provides training and certification for network professionals at various skill levels.</p>
+                <h2>Tentang Akademi Mikrotik</h2>
+                <p>MikroTik Academy adalah program pendidikan yang menyediakan pelatihan dan sertifikasi bagi para profesional jaringan di berbagai tingkat keterampilan.</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Why Choose Our Academy?</h3>
-                    <p>The MikroTik Academy program is designed to provide students with the knowledge and skills needed to configure, manage, and troubleshoot MikroTik routers and network systems.</p>
-                    <p>Our curriculum is developed by networking experts and follows the official MikroTik certification path, ensuring you receive industry-relevant training.</p>
-                    <p>With hands-on labs and real-world scenarios, our students graduate with practical experience that sets them apart in the job market.</p>
-                    <a href="#faq" class="btn">Learn More</a>
+                    <h3>Mengapa Memilih Akademi Kami?</h3>
+                    <p>Program MikroTik Academy dirancang untuk memberikan siswa pengetahuan dan keterampilan yang dibutuhkan untuk mengonfigurasi, mengelola, dan memecahkan masalah router MikroTik dan sistem jaringan.</p>
+                    <p>Kurikulum kami dikembangkan oleh para ahli jaringan dan mengikuti jalur sertifikasi resmi MikroTik, memastikan Anda menerima pelatihan yang relevan dengan industri.</p>
+                    <p>Dengan laboratorium praktik dan skenario dunia nyata, siswa kami lulus dengan pengalaman praktis yang membedakan mereka di pasar kerja.</p>
+                    <a href="#faq" class="btn">Pelajari Lebih Lanjut</a>
                 </div>
                 <div class="about-image">
-                    <img src="gambar/alan.png" alt="About Mikrotik Academy">
+                    <img src="gambar/foto5.jpeg" alt="Tentang Akademi Mikrotik">
                 </div>
             </div>
         </div>
@@ -885,8 +1078,8 @@
     <section class="section" id="slider">
         <div class="container">
             <div class="section-title">
-                <h2>Our Academy in Action</h2>
-                <p>See what our students are learning and achieving in our Mikrotik Academy program.</p>
+                <h2>Akademi Kami Beraksi</h2>
+                <p>Lihat apa yang dipelajari dan dicapai siswa kami dalam program Mikrotik Academy.</p>
             </div>
             <div class="slider-container">
                 <div class="slider" id="imageSlider">
@@ -928,30 +1121,30 @@
     <section class="section" id="services">
         <div class="container">
             <div class="section-title">
-                <h2>Our Services</h2>
-                <p>We offer comprehensive training programs to help you master MikroTik networking.</p>
+                <h2>Layanan kami</h2>
+                <p>Kami menawarkan program pelatihan komprehensif untuk membantu Anda menguasai jaringan MikroTik.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3>Security Training</h3>
-                    <p>Master network security concepts including firewall configuration, VPN setup, and threat mitigation.</p>
+                    <h3>Pelatihan Keamanan</h3>
+                    <p>Kuasai konsep keamanan jaringan termasuk konfigurasi firewall, pengaturan VPN, dan mitigasi ancaman.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-tools"></i>
                     </div>
-                    <h3>Troubleshooting</h3>
-                    <p>Develop skills to diagnose and resolve common network issues in MikroTik environments.</p>
+                    <h3>Penyelesaian Masalah</h3>
+                    <p>Mengembangkan keterampilan untuk mendiagnosis dan menyelesaikan masalah jaringan umum di lingkungan MikroTik.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-cloud"></i>
                     </div>
-                    <h3>Wireless Networking</h3>
-                    <p>Comprehensive training on configuring and optimizing wireless networks with MikroTik.</p>
+                    <h3>Jaringan Nirkabel</h3>
+                    <p>Pelatihan komprehensif tentang konfigurasi dan pengoptimalan jaringan nirkabel dengan MikroTik.</p>
                 </div>
                 
             </div>
@@ -961,8 +1154,8 @@
     <section class="section" id="trainers">
         <div class="container">
             <div class="section-title">
-                <h2>Our Certified Trainers</h2>
-                <p>Learn from industry experts with extensive MikroTik experience and teaching credentials.</p>
+                <h2>Pelatih Bersertifikat Kami</h2>
+                <p>Belajar dari para pakar industri yang memiliki pengalaman MikroTik yang luas dan kredensial pengajaran. Belajar dari para pakar industri yang memiliki pengalaman MikroTik yang luas dan kredensial pengajaran.</p>
             </div>
             <div class="trainers-grid">
                 <div class="trainer-card">
@@ -971,7 +1164,7 @@
                     </div>
                     <div class="trainer-info">
                         <h3>Alan</h3>
-                        <p>pran sebagai dev</p>
+                        <p>peran sebagai dev</p>
                         <div class="trainer-social">
                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1029,62 +1222,62 @@
     <section class="section" id="faq">
         <div class="container">
             <div class="section-title">
-                <h2>Frequently Asked Questions</h2>
-                <p>Find answers to common questions about our MikroTik Academy program.</p>
+                <h2>Pertanyaan yang Sering Diajukan</h2>
+                <p>Temukan jawaban atas pertanyaan umum tentang program MikroTik Academy kami.</p>
             </div>
             <div class="faq-container">
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h4>What is MikroTik Academy?</h4>
+                        <h4>Apa itu MikroTik Academy?</h4>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>MikroTik Academy is an educational program that provides training and certification for network professionals at various skill levels. It helps students understand networking fundamentals and gain practical skills with MikroTik routers and network systems.</p>
+                        <p>MikroTik Academy adalah program pendidikan yang menyediakan pelatihan dan sertifikasi bagi para profesional jaringan di berbagai tingkat keterampilan. Program ini membantu siswa memahami dasar-dasar jaringan dan memperoleh keterampilan praktis dengan router dan sistem jaringan MikroTik.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h4>What are the benefits of joining MikroTik Academy?</h4>
+                        <h4>Apa keuntungan bergabung dengan MikroTik Academy?</h4>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Benefits include: industry-recognized certification, hands-on experience with networking equipment, improved job prospects, practical skills for real-world networking challenges, and access to a community of networking professionals.</p>
+                        <p>Manfaatnya meliputi: sertifikasi yang diakui industri, pengalaman langsung dengan peralatan jaringan, prospek pekerjaan yang lebih baik, keterampilan praktis untuk tantangan jaringan di dunia nyata, dan akses ke komunitas profesional jaringan..</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h4>What is the duration of the MTCNA course?</h4>
+                        <h4>Berapa lama durasi kursus MTCNA?</h4>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>The standard MTCNA course typically runs for 3-5 days of intensive training, depending on the schedule. We also offer extended part-time options that span several weeks for those who prefer a more gradual learning pace.</p>
+                        <p>Kursus MTCNA standar biasanya berlangsung selama 3-5 hari pelatihan intensif, tergantung pada jadwalnya. Kami juga menawarkan opsi paruh waktu yang diperpanjang selama beberapa minggu bagi mereka yang lebih menyukai kecepatan belajar yang lebih bertahap.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h4>Do I need prior networking experience?</h4>
+                        <h4>Apakah saya memerlukan pengalaman jaringan sebelumnya?</h4>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>While prior networking knowledge is helpful, our MTCNA course is designed for beginners. We cover networking fundamentals before moving to MikroTik-specific topics. For more advanced courses, we recommend starting with MTCNA.</p>
+                        <p>Meskipun pengetahuan jaringan sebelumnya sangat membantu, kursus MTCNA kami dirancang untuk pemula. Kami membahas dasar-dasar jaringan sebelum beralih ke topik khusus MikroTik. Untuk kursus yang lebih lanjut, kami sarankan untuk memulai dengan MTCNA.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h4>What equipment is used in the training?</h4>
+                        <h4>Peralatan apa yang digunakan dalam pelatihan?</h4>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>We use actual MikroTik routers and switches in our labs. Students get hands-on experience with devices like the hEX, hAP ac, and RB4011 models. For remote learning, we provide access to virtual lab environments.</p>
+                        <p>Kami menggunakan router dan switch MikroTik yang sebenarnya di lab kami. Siswa mendapatkan pengalaman langsung dengan perangkat seperti model hEX, hAP ​​ac, dan RB4011. Untuk pembelajaran jarak jauh, kami menyediakan akses ke lingkungan lab virtual.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h4>How do I prepare for the certification exam?</h4>
+                        <h4>Bagaimana saya mempersiapkan diri untuk ujian sertifikasi?</h4>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Our course includes exam preparation materials, practice tests, and hands-on labs that cover all exam objectives. We recommend reviewing course materials, practicing configurations, and taking our mock exams before attempting the official certification test.</p>
+                        <p>Kursus kami mencakup materi persiapan ujian, tes praktik, dan laboratorium praktik yang mencakup semua tujuan ujian. Kami sarankan untuk meninjau materi kursus, berlatih konfigurasi, dan mengikuti ujian tiruan kami sebelum mengikuti ujian sertifikasi resmi.</p>
                     </div>
                 </div>
             </div>
@@ -1134,9 +1327,9 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
-                    <h3>About Us</h3>
-                    <p>Mikrotik Academy at SMK Panca Bhakti Rakit provides industry-standard networking training and certification to prepare students for careers in IT infrastructure.</p>
+                <div class="footer-column" id="okehh">
+                    <h3>Tentang Kami</h3>
+                    <p>Mikrotik Academy di SMK Panca Bhakti Rakit menyediakan pelatihan dan sertifikasi jaringan berstandar industri untuk mempersiapkan siswa berkarir di infrastruktur TI.</p>
                     <div class="footer-social">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1253,6 +1446,80 @@
                 header.style.boxShadow = 'none';
             }
         });
+        // Hero Slider Functionality
+        const heroSlider = () => {
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.querySelector('.slider-prev');
+            const nextBtn = document.querySelector('.slider-next');
+            let currentSlide = 0;
+            let slideInterval;
+            const slideDuration = 5000; // 5 seconds
+            
+            // Show current slide
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentSlide = index;
+            }
+            
+            // Next slide
+            function nextSlide() {
+                const newIndex = (currentSlide + 1) % slides.length;
+                showSlide(newIndex);
+            }
+            
+            // Previous slide
+            function prevSlide() {
+                const newIndex = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(newIndex);
+            }
+            
+            // Start auto sliding
+            function startSlider() {
+                slideInterval = setInterval(nextSlide, slideDuration);
+            }
+            
+            // Pause auto sliding when hovering over slider
+            function pauseSlider() {
+                clearInterval(slideInterval);
+            }
+            
+            // Event listeners
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                pauseSlider();
+                startSlider();
+            });
+            
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                pauseSlider();
+                startSlider();
+            });
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                    pauseSlider();
+                    startSlider();
+                });
+            });
+            
+            // Pause on hover
+            document.querySelector('.hero-slider').addEventListener('mouseenter', pauseSlider);
+            document.querySelector('.hero-slider').addEventListener('mouseleave', startSlider);
+            
+            // Initialize
+            showSlide(currentSlide);
+            startSlider();
+        };
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', heroSlider);
     </script>
 </body>
 </html>
